@@ -1,5 +1,6 @@
 package com.wompwompstudios.u_jack
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -25,19 +26,14 @@ class SignUpActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         val user = auth.currentUser
+                        startActivity(Intent(this, MainActivity::class.java)).apply{
+
+                        }
                     } else {
                         // If sign in fails, display a message to the user
+
                     }
                 }
         }
     }
-    public override fun onStart() {
-        super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        if(currentUser != null) {
-            // TODO: Redirect to main page
-        }
-    }
-
 }
