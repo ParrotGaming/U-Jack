@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/iSearchBtn"
+        android:title="Search"
+        android:icon="@drawable/search_magnifier_outline_svgrepo_com"/>
+
+
+    <item
+        android:id="@+id/iReportBtn"
+        android:title="Report"
+        android:icon="@drawable/incognito_svgrepo_com"/>
+
+    <item
+        android:id="@+id/iLogbookBtn"
+        android:title="Logbook"
+        android:icon="@drawable/ledger_svgrepo_com"/>
+
+    <item
+        android:id="@+id/iAccountBtn"
+        android:title="Account"
+        android:icon="@drawable/baseline_account_circle_24"/>
+
+</menu>
