@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp">
+
+    <ImageView
+        android:id="@+id/imgCarInput"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/UserIDInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="User ID"
+        app:layout_constraintBottom_toTopOf="@+id/UserCarDescriptionInput"
+        app:layout_constraintEnd_toStartOf="@+id/UserRatingStatementInput"
+        app:layout_constraintStart_toStartOf="@+id/UserCarDescriptionInput"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"/>
+
+    <RatingBar
+        android:id="@+id/rtUserRatingInput"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:numStars="5"
+        app:layout_constraintBottom_toTopOf="@+id/UserCarDescriptionInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/UserCarDescriptionInput"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:text="User Description"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/EstimatedCarValueInput"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/UserRatingStatementInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This users rating is:"
+        app:layout_constraintBottom_toTopOf="@+id/UserCarDescriptionInput"
+        app:layout_constraintEnd_toStartOf="@+id/rtUserRatingInput"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"/>
+
+    <EditText
+        android:id="@+id/EstimatedCarValueInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Estimated Value"
+        app:layout_constraintEnd_toStartOf="@+id/DifficultyRatingStatementInput"
+        app:layout_constraintTop_toBottomOf="@+id/UserCarDescriptionInput"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"/>
+
+    <EditText
+        android:id="@+id/DifficultyRatingStatementInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Difficulty Rating "
+        app:layout_constraintEnd_toStartOf="@+id/rtUserRatingInput"
+        app:layout_constraintTop_toBottomOf="@+id/UserCarDescriptionInput" />
+
+    <ProgressBar
+        android:id="@+id/DifficultyRatingBarInput"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="73dp"
+        android:layout_height="19dp"
+        app:layout_constraintStart_toEndOf="@+id/DifficultyRatingStatementInput"
+        app:layout_constraintTop_toBottomOf="@+id/UserCarDescriptionInput"
+        android:layout_marginTop="5dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
