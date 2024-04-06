@@ -19,6 +19,11 @@ class MainActivity : AppCompatActivity() {
         }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val btnToReportPage = findViewById<Button>(R.id.btnToReportPage)
+
+        btnToReportPage.setOnClickListener() {
+            startActivity(Intent(this,ReportActivity::class.java))
+        }
 
     }
 }
