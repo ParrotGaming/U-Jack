@@ -9,28 +9,32 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.google.firebase.Firebase
 
-class SignUpActivity : AppCompatActivity() {
+class LogInActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         // Initialize Firebase Auth
         auth = Firebase.auth
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_signup)
-        val btnSignUp = findViewById<Button>(R.id.btnSignUp)
-        val etEmailSignUp = findViewById<EditText>(R.id.etEmailSignUp)
-        val etPasswordSignUp = findViewById<EditText>(R.id.etPasswordSignUp)
+        setContentView(R.layout.activity_login)
+        val btnLogIn = findViewById<Button>(R.id.btnLogIn)
+        val btnCreateAccount = findViewById<Button>(R.id.btnCreateAccount)
+        val etEmailLogIn = findViewById<EditText>(R.id.etEmailLogIn)
+        val etPasswordLogIn = findViewById<EditText>(R.id.etPasswordLogIn)
 
-        btnSignUp.setOnClickListener() {
-            auth.createUserWithEmailAndPassword(etEmailSignUp.text.toString(), etPasswordSignUp.text.toString())
+        btnLogIn.setOnClickListener() {
+            auth.signInWithEmailAndPassword(etEmailLogIn.text.toString(), etPasswordLogIn.text.toString())
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         startActivity(Intent(this, MainActivity::class.java))
                     } else {
-                        // If sign in fails, display a message to the user
-                        println("FAILED")
+                        // If sign in fails, display a message to the user.
+
                     }
                 }
+        }
+        btnCreateAccount.setOnClickListener() {
+            startActivity(Intent(this,SignUpActivity::class.java))
         }
     }
 }
