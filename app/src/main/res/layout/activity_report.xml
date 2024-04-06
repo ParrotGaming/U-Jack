@@ -21,8 +21,9 @@
 
     <ImageView
         android:id="@+id/CarImage"
-        android:layout_width="200dp"
+        android:layout_width="350dp"
         android:layout_height="200dp"
+        app:layout_constraintBottom_toTopOf="@+id/UserCarDescriptionInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,9 +33,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Image"
+        app:layout_constraintBottom_toTopOf="@+id/CarImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CarImage" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/UserCarDescriptionInput"
@@ -48,7 +50,7 @@
 
     <EditText
         android:id="@+id/EstimatedCarValueInput"
-        android:layout_width="0dp"
+        android:layout_width="252dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginRight="5dp"
