@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1095241813484",
+    "project_id": "u-jack",
+    "storage_bucket": "u-jack.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1095241813484:android:af4e13d8502e30344304c9",
+        "android_client_info": {
+          "package_name": "com.wompwompstudios.u_jack"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7z9O3ZivTXQJpyR_jmTCk-WPEnMPKUSw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
