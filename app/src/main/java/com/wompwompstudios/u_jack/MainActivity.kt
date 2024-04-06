@@ -14,10 +14,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         auth = FirebaseAuth.getInstance()
-        if (auth == null) {
-            println("FUCK FUCK FUCK")
-        } else {
-            println("YIPPEEEEEEE!!!!")
+        if(auth.currentUser == null) {
+            startActivity(Intent(this,LogInActivity::class.java))
         }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
