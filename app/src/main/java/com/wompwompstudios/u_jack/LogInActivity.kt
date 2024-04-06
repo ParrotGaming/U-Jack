@@ -26,6 +26,8 @@ class LogInActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
+                        etEmailLogIn.text.clear()
+                        etPasswordLogIn.text.clear()
                         startActivity(Intent(this, MainActivity::class.java))
                     } else {
                         // If sign in fails, display a message to the user.
