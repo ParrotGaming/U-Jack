@@ -7,45 +7,24 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/flPageFrame"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bnvNavBar"
         tools:layout_editor_absoluteX="1dp">
 
-        <Button
-            android:id="@+id/btnToFindPage"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="0dp"
-            android:layout_weight="1"
-            android:text="Find" />
+    </FrameLayout>
 
-        <Button
-            android:id="@+id/btnToReportPage"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="0dp"
-            android:layout_weight="1"
-            android:text="Report" />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bnvNavBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="1dp"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/bottom_nav">
 
-        <Button
-            android:id="@+id/btnToTheftLog"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="0dp"
-            android:layout_weight="1"
-            android:text="Log" />
-
-        <Button
-            android:id="@+id/btnToAccPage"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="0dp"
-            android:layout_weight="1"
-            android:text="Account" />
-
-    </LinearLayout>
-
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 </androidx.constraintlayout.widget.ConstraintLayout>
