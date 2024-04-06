@@ -84,4 +84,5 @@
         app:layout_constraintStart_toEndOf="@+id/DifficultyRatingStatement"
         app:layout_constraintTop_toBottomOf="@+id/UserCarDescription"
         android:layout_marginTop="5dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
