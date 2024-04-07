@@ -5,13 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.Firebase
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.firestore
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.wompwompstudios.u_jack.databinding.ActivityMainBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,15 +13,13 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [SearchFragment.newInstance] factory method to
+ * Use the [SearchPackagesFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SearchFragment : Fragment() {
+class SearchPackagesFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
-    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,23 +34,7 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
-    }
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        // TODO: Place all code dependant on views within fragment in here
-        (activity as MainActivity).replaceFragment(R.id.flSearchPageFrame, SearchCarsFragment())
-
-        val bnvSearchTypeBar = view.findViewById<BottomNavigationView>(R.id.bnvSearchTypeBar)
-        bnvSearchTypeBar.setOnItemSelectedListener {
-            when(it.itemId) {
-                R.id.iSearchCarsBtn -> (activity as MainActivity).replaceFragment(R.id.flSearchPageFrame, SearchCarsFragment())
-                R.id.iSearchPackagesBtn -> (activity as MainActivity).replaceFragment(R.id.flSearchPageFrame, SearchPackagesFragment())
-                else -> {}
-            }
-            true
-        }
+        return inflater.inflate(R.layout.fragment_search_packages, container, false)
     }
 
     companion object {
@@ -69,12 +44,12 @@ class SearchFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment SearchFragment.
+         * @return A new instance of fragment SearchPackagesFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            SearchFragment().apply {
+            SearchPackagesFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

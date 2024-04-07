@@ -1,13 +1,10 @@
 package com.wompwompstudios.u_jack
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +17,6 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.firestore
 import com.google.firebase.storage.storage
-import okhttp3.internal.wait
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -33,7 +29,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [ReportFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ReportFragment : Fragment() {
+class  ReportFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -108,7 +104,7 @@ class ReportFragment : Fragment() {
                             database.collection("cars")
                                 .add(car)
                                 .addOnSuccessListener { documentReference ->
-                                    (activity as MainActivity).replaceFragment(SearchFragment())
+                                    (activity as MainActivity).replaceFragment(R.id.flMainPageFrame, SearchCarsFragment())
                                 }
                                 .addOnFailureListener { e ->
                                     println(e)
