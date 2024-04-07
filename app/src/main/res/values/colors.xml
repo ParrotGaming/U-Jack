@@ -3,8 +3,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#e44030</color>
-    <color name="light_orange">#f37d66</color>
+    <color name="light_orange">#FF7949</color>
     <color name="navy_blue">#143747</color>
-    <color name="light_blue">#90a8b5</color>
+    <color name="grey_blue">#90a8b5</color>
+    <color name="light_blue">#59B4E2</color>
+    <color name="peach">#eea96e</color>
 </resources>
 
