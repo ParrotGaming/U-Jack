@@ -16,8 +16,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UserCarDescriptionInput"
-        app:layout_constraintVertical_bias="0.278" />
+        app:layout_constraintTop_toTopOf="@+id/UserCarDescriptionInput" />
 
     <ImageView
         android:id="@+id/CarImage"
@@ -42,6 +41,7 @@
         android:id="@+id/UserCarDescriptionInput"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+
         android:hint="User Description"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,4 +68,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/UserCarDescriptionInput" />
 
+    <EditText
+        android:id="@+id/CityAndAreaInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="City"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EstimatedCarValueInput" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="74dp"
+        tools:layout_editor_absoluteY="47dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
