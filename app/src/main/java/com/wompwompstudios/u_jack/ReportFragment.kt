@@ -62,6 +62,7 @@ class  ReportFragment : Fragment() {
         bnvReportTypeBar.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.iSearchCarsBtn -> startActivity(Intent(activity, ReportCarActivity::class.java))
+                R.id.iSearchPackagesBtn -> startActivity(Intent(activity, ReportPackageActivity::class.java))
                 else -> {}
             }
             true
