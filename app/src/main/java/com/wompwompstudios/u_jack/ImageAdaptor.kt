@@ -8,7 +8,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import org.w3c.dom.Text
 
 class ImageAdapter(
     private val context: Context,
@@ -37,7 +36,7 @@ class ImageAdapter(
         val curImage = images[position]
         val curDescription = descriptions[position]
         val curValue = values[position]
-        val vurDifficulty = difficulties[position]
+        val curDifficulty = difficulties[position]
         val curId = ids[position]
         holder.itemView.apply {
             val imageView = findViewById<ImageView>(R.id.imgCar)
@@ -49,7 +48,7 @@ class ImageAdapter(
             val valueCar = findViewById<TextView>(R.id.EstimatedCarValue)
             valueCar.text = "Estimated value: $" + curValue
             val difficultyCar = findViewById<TextView>(R.id.DifficultyRatingStatement)
-            difficultyCar.text = "Difficulty: " + vurDifficulty
+            difficultyCar.text = "Difficulty: " + curDifficulty
         }
     }
     fun addImage(image: Image, description: String, value: String, difficulty: String, id: String) {
