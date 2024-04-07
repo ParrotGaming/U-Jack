@@ -6,7 +6,6 @@
         android:title="Search"
         android:icon="@drawable/search_magnifier_outline_svgrepo_com"/>
 
-
     <item
         android:id="@+id/iReportBtn"
         android:title="Report"

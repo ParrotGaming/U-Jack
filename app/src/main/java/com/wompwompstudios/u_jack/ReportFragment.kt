@@ -81,7 +81,7 @@ class ReportFragment : Fragment() {
                 database.collection("cars")
                     .add(car)
                     .addOnSuccessListener { documentReference ->
-                        (activity as MainActivity).replaceFragment(SearchFragment())
+                        (activity as MainActivity).replaceFragment(R.id.flMainPageFrame, SearchFragment())
                     }
                     .addOnFailureListener { e ->
                         println(e)
