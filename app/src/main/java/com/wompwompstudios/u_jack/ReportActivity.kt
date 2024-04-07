@@ -32,24 +32,7 @@ class ReportActivity : AppCompatActivity(){
         val etUserDescription = findViewById<EditText>(R.id.UserCarDescriptionInput)
         val etEstimatedValue = findViewById<EditText>(R.id.EstimatedCarValueInput)
         val etDifficultyRating = findViewById<EditText>(R.id.DifficultyRatingStatementInput)
-        val carImageView = findViewById<ImageView>(R.id.CarImage)
-        val carImagebtn = findViewById<Button>(R.id.btnAddImage)
 
-        val changeImage =
-            registerForActivityResult(
-                ActivityResultContracts.StartActivityForResult()
-            ) {
-                if (it.resultCode == Activity.RESULT_OK) {
-                    val data = it.data
-                    val imgUri = data?.data
-                    carImageView.setImageURI(imgUri)
-                }
-            }
-
-        carImagebtn.setOnClickListener {
-            val picking = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-            changeImage.launch(picking)
-        }
 
 
         btnSubmitReport.setOnClickListener() {
