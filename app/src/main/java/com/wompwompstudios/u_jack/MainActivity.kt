@@ -35,9 +35,15 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
+        //View references
+        val btnSubmitReport = findViewById<Button>(R.id.btnSubmitReport)
+        val etUserDescription = findViewById<EditText>(R.id.UserCarDescriptionInput)
+        val etEstimatedValue = findViewById<EditText>(R.id.EstimatedCarValueInput)
+        val etDifficultyRating = findViewById<EditText>(R.id.DifficultyRatingStatementInput)
     }
 
-    private fun replaceFragment(fragment: Fragment) {
+    public fun replaceFragment(fragment: Fragment) {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.flPageFrame, fragment)
