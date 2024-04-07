@@ -1,5 +1,6 @@
 package com.wompwompstudios.u_jack
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
@@ -34,16 +35,15 @@ class LogSurvey : AppCompatActivity() {
             val money = moneyInput.text.toString().toInt()
             val store = dropdown.selectedItem.toString()
             Log.d(Log.INFO.toString(), "$money from $store")
-            val theft = hashMapOf(
-                "User" to auth.currentUser!!.uid,
-                "Store" to store,
-                "Amount" to money
-            )
-            database.collection("thefts")
-                .add(theft)
-                .addOnSuccessListener { finish() }
-                .addOnFailureListener {e ->
-                    Log.d(Log.ERROR.toString(), e.toString())
+            database.collection("thefts").document(auth.currentUser!!.uid)
+                .get()
+                .addOnSuccessListener { documents ->
+                    val initial: Float = documents.data!![store].toString().toFloat()
+                    database.collection("thefts").document(auth.currentUser!!.uid).update(store, (initial - money))
+                    startActivity(Intent(this, MainActivity::class.java))
+                    Log.d(Log.INFO.toString(), documents.data.toString())
+                }.addOnFailureListener {
+                    Log.d(Log.ERROR.toString(), "IT NO WORKY WORK")
                 }
         }
 

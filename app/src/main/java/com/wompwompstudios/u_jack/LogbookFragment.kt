@@ -7,6 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.firestore
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,9 +45,23 @@ class LogbookFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val auth = FirebaseAuth.getInstance()
+        val database = Firebase.firestore
         val btn = view.findViewById<Button>(R.id.button)
+        val textBox = view.findViewById<TextView>(R.id.tvStoreTabs)
 
+        database.collection("thefts").document(auth.currentUser!!.uid).get()
+            .addOnSuccessListener {documents ->
+                var builtString = "Felony Tracker:\n\n"
+                for (document in documents.data!!.keys) {
+                    var total = (documents.data!![document].toString())
+                    if (total.toFloat() <= 0) {
+                        total = "0"
+                    }
+                    builtString += "${document}: $${total}\n\n"
+                }
+                textBox.setText(builtString)
+            }
         btn.setOnClickListener {
             startActivity(Intent(requireContext(), LogSurvey::class.java))
         }
