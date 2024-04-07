@@ -44,7 +44,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LogSurvey"
+            android:name=".ReportCarActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.CREATE_DOCUMENT" />
@@ -54,6 +54,15 @@
         </activity>
         <activity
             android:name=".LogSurvey"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_DOCUMENT" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ReportPackageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.CREATE_DOCUMENT" />

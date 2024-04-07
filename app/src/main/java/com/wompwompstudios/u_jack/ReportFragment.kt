@@ -13,6 +13,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.firestore
@@ -57,82 +58,14 @@ class  ReportFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Initialize Firebase Auth
-        auth = FirebaseAuth.getInstance()
-        val database = Firebase.firestore
-        val storage = Firebase.storage("gs://u-jack.appspot.com")
-        val storageRef = storage.reference
-        var image:Uri? = null
-        //View references
-        val btnSubmitReport = view.findViewById<Button>(R.id.btnSubmitReport)
-        val etUserDescription = view.findViewById<EditText>(R.id.UserCarDescriptionInput)
-        val etEstimatedValue = view.findViewById<EditText>(R.id.EstimatedCarValueInput)
-        val etDifficultyRating = view.findViewById<EditText>(R.id.DifficultyRatingStatementInput)
-        val carImageView = view.findViewById<ImageView>(R.id.CarImage)
-        val carImagebtn = view.findViewById<Button>(R.id.btnAddImage)
-
-        //Btn submit logic
-        btnSubmitReport.setOnClickListener() {
-            //validate input
-            if(Integer.parseInt(etDifficultyRating?.text.toString()) in 1..10) {
-                //create car object
-                var imageUrl = "https://placehold.co/400.png"
-                if(image != null) {
-                    val carRef = storageRef.child("images/${image!!.lastPathSegment}")
-                    val uploadTask = carRef.putFile(image!!)
-
-                    val urlTask = uploadTask.continueWithTask { task ->
-                        if (!task.isSuccessful) {
-                            task.exception?.let {
-                                throw it
-                            }
-                        }
-                        carRef.downloadUrl
-                    }.addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            imageUrl = task.result.toString()
-
-                            val car = hashMapOf(
-                                "User" to auth.currentUser!!.uid,
-                                "Description" to etUserDescription?.text.toString(),
-                                "Value" to etEstimatedValue?.text.toString(),
-                                "Difficulty" to etDifficultyRating?.text.toString(),
-                                "Location" to "37°46'38.7\"N 122°26'57.5\"W",
-                                "Image" to imageUrl
-                            )
-                            //push to database
-                            database.collection("cars")
-                                .add(car)
-                                .addOnSuccessListener { documentReference ->
-                                    (activity as MainActivity).replaceFragment(R.id.flMainPageFrame, SearchCarsFragment())
-                                }
-                                .addOnFailureListener { e ->
-                                    println(e)
-                                }
-                        } else {
-                            // Handle failures
-                            // ...
-                        }
-                    }
-                }
+        val bnvReportTypeBar = view.findViewById<BottomNavigationView>(R.id.bnvReportTypeBar)
+        bnvReportTypeBar.setOnItemSelectedListener {
+            when(it.itemId) {
+                R.id.iSearchCarsBtn -> startActivity(Intent(activity, ReportCarActivity::class.java))
+                R.id.iSearchPackagesBtn -> startActivity(Intent(activity, ReportPackageActivity::class.java))
+                else -> {}
             }
-        }
-
-        val changeImage =
-            registerForActivityResult(
-                ActivityResultContracts.StartActivityForResult()
-            ) {
-                if (it.resultCode == Activity.RESULT_OK) {
-                    val data = it.data
-                    val imgUri = data?.data
-                    image = imgUri
-                    carImageView.setImageURI(imgUri)
-                }
-            }
-
-        carImagebtn.setOnClickListener {
-            val picking = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-            changeImage.launch(picking)
+            true
         }
     }
 
