@@ -5,8 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.Firebase
@@ -47,33 +45,11 @@ class SearchFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_search, container, false)
     }
-    private lateinit var ImageAdaptor: ImageAdapter
-    private lateinit var auth: FirebaseAuth
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         // TODO: Place all code dependant on views within fragment in here
         (activity as MainActivity).replaceFragment(R.id.flSearchPageFrame, SearchCarsFragment())
-
-        ImageAdaptor = ImageAdapter((activity as MainActivity).applicationContext, mutableListOf(), mutableListOf(), mutableListOf(), mutableListOf(), mutableListOf())
-
-        auth = FirebaseAuth.getInstance()
-        val database = Firebase.firestore
-
-        val rvAdaptor = view.findViewById<RecyclerView>(R.id.rvListOfCars)
-        rvAdaptor.adapter = ImageAdaptor
-        rvAdaptor.layoutManager = LinearLayoutManager((activity as MainActivity))
-
-        database.collection("cars")
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    ImageAdaptor.addImage(Image(document.data["Image"].toString(), "test"), document.data["Description"].toString(), document.data["Value"].toString(), document.data["Difficulty"].toString(), document.data["User"].toString())
-                }
-            }
-            .addOnFailureListener { exception ->
-
-            }
 
         val bnvSearchTypeBar = view.findViewById<BottomNavigationView>(R.id.bnvSearchTypeBar)
         bnvSearchTypeBar.setOnItemSelectedListener {
