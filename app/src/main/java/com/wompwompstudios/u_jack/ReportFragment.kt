@@ -1,10 +1,17 @@
 package com.wompwompstudios.u_jack
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.firestore
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,15 +24,45 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class ReportFragment : Fragment() {
+    private lateinit var auth: FirebaseAuth
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        // Initialize Firebase Auth
+        auth = FirebaseAuth.getInstance()
+        val database = Firebase.firestore
+
+        //Content view
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+        }
+
+        //Btn submit logic
+        btnSubmitReport.setOnClickListener() {
+            //validate input
+            if(Integer.parseInt(etDifficultyRating?.text.toString()) in 1..10) {
+                //create car object
+                val car = hashMapOf(
+                    "User" to auth.currentUser!!.uid,
+                    "Description" to etUserDescription?.text.toString(),
+                    "Value" to etEstimatedValue?.text.toString(),
+                    "Difficulty" to etDifficultyRating?.text.toString(),
+                )
+                //push to database
+                database.collection("cars")
+                    .add(car)
+                    .addOnSuccessListener { documentReference ->
+                        MainActivity().replaceFragment(SearchFragment())
+                    }
+                    .addOnFailureListener { e ->
+                        println(e)
+                    }
+            }
         }
     }
 
@@ -33,6 +70,7 @@ class ReportFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_report, container, false)
     }
