@@ -21,7 +21,7 @@ class ReportCarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         //Content view
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_report_car)
+        setContentView(R.layout.activity_report_survey)
 
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
