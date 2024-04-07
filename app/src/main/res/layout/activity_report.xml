@@ -26,7 +26,8 @@
         app:layout_constraintBottom_toTopOf="@+id/UserCarDescriptionInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@android:drawable/ic_menu_gallery" />
 
     <Button
         android:id="@+id/btnAddImage"
