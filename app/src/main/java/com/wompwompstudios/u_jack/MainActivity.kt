@@ -1,9 +1,11 @@
 package com.wompwompstudios.u_jack
 
 import android.content.Intent
+import android.content.LocusId
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
@@ -23,24 +25,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(SearchFragment())
+        replaceFragment(R.id.flMainPageFrame, SearchFragment())
 
         binding.bnvNavBar.setOnItemSelectedListener {
             when(it.itemId) {
-                R.id.iSearchBtn -> replaceFragment(SearchFragment())
-                R.id.iReportBtn -> replaceFragment(ReportFragment())
-                R.id.iLogbookBtn -> replaceFragment(LogbookFragment())
-                R.id.iAccountBtn -> replaceFragment(AccountFragment())
+                R.id.iSearchBtn -> replaceFragment(R.id.flMainPageFrame, SearchFragment())
+                R.id.iReportBtn -> replaceFragment(R.id.flMainPageFrame, ReportFragment())
+                R.id.iLogbookBtn -> replaceFragment(R.id.flMainPageFrame, LogbookFragment())
+                R.id.iAccountBtn -> replaceFragment(R.id.flMainPageFrame, AccountFragment())
                 else -> {}
             }
             true
         }
     }
 
-    public fun replaceFragment(fragment: Fragment) {
+    public fun replaceFragment(id: Int, fragment: Fragment) {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.flPageFrame, fragment)
+        fragmentTransaction.replace(id, fragment)
         fragmentTransaction.commit()
     }
 }

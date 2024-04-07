@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/iSearchCarsBtn"
+        android:title="Cars"
+        android:icon="@drawable/car_svgrepo_com"/>
+
+    <item
+        android:id="@+id/iSearchPackagesBtn"
+        android:title="Packages"
+        android:icon="@drawable/package_box_ui_4_svgrepo_com"/>
+
+</menu>
