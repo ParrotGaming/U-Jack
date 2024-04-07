@@ -12,10 +12,18 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvReportFragmentTitle"
-        tools:layout_editor_absoluteX="1dp"
-        app:labelVisibilityMode="unlabeled"
-        app:menu="@menu/searchtype_nav">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/UserCarDescriptionInput" />
+
+    <ImageView
+        android:id="@+id/CarImage"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toTopOf="@+id/UserCarDescriptionInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
@@ -23,10 +31,40 @@
         android:id="@+id/tvReportFragmentTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="Report"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="-7dp" />
+
+        android:hint="User Description"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/EstimatedCarValueInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:hint="Estimated Value"
+        app:layout_constraintEnd_toStartOf="@+id/DifficultyRatingStatementInput"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/UserCarDescriptionInput" />
+
+    <EditText
+        android:id="@+id/DifficultyRatingStatementInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:hint="Risk Rating "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/UserCarDescriptionInput" />
+
+    <EditText
+        android:id="@+id/CityAndAreaInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="City"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EstimatedCarValueInput" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="125dp"
+    android:layout_marginTop="25dp"
+    android:background="@color/light_blue"
+    android:paddingStart="8dp"
+    android:paddingTop="8dp"
+    android:paddingEnd="8dp"
+    android:paddingBottom="8dp"
+    app:circularflow_radiusInDP="25dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginLeft="8dp">
+
+    <ImageView
+        android:id="@+id/imgPackage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/UserID"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="User ID"
+        android:textColor="@color/navy_blue"
+        android:shadowColor="@color/navy_blue"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="2"
+        app:layout_constraintBottom_toTopOf="@+id/UserPackageDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/UserPackageDescription"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/UserPackageDescription"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/navy_blue"
+        android:shadowColor="@color/navy_blue"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="2"
+        android:text="User Description"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgPackage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/GuessedPackagedItem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/navy_blue"
+        android:shadowColor="@color/navy_blue"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="2"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
+        android:text="Guessed Item"
+        app:layout_constraintEnd_toStartOf="@+id/DifficultyRatingStatement"
+        app:layout_constraintStart_toEndOf="@+id/imgPackage"
+        app:layout_constraintTop_toBottomOf="@+id/UserPackageDescription" />
+
+    <TextView
+        android:id="@+id/DifficultyRatingStatement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/navy_blue"
+        android:shadowColor="@color/navy_blue"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="2"
+        android:layout_marginTop="5dp"
+        android:text="Difficulty Rating "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/UserPackageDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
