@@ -63,6 +63,8 @@ class ReportFragment : Fragment() {
         val etUserDescription = view.findViewById<EditText>(R.id.UserCarDescriptionInput)
         val etEstimatedValue = view.findViewById<EditText>(R.id.EstimatedCarValueInput)
         val etDifficultyRating = view.findViewById<EditText>(R.id.DifficultyRatingStatementInput)
+        val carImageView = view.findViewById<ImageView>(R.id.CarImage)
+        val carImagebtn = view.findViewById<Button>(R.id.btnAddImage)
 
         //Btn submit logic
         btnSubmitReport.setOnClickListener() {
@@ -79,16 +81,13 @@ class ReportFragment : Fragment() {
                 database.collection("cars")
                     .add(car)
                     .addOnSuccessListener { documentReference ->
-                        MainActivity().replaceFragment(SearchFragment())
+                        (activity as MainActivity).replaceFragment(SearchFragment())
                     }
                     .addOnFailureListener { e ->
                         println(e)
                     }
             }
         }
-        val carImageView = view.findViewById<ImageView>(R.id.CarImage)
-        val carImagebtn = view.findViewById<Button>(R.id.btnAddImage)
-
         val changeImage =
             registerForActivityResult(
                 ActivityResultContracts.StartActivityForResult()
