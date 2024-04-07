@@ -8,7 +8,9 @@
     tools:context=".MainActivity"
     android:layout_marginTop="8dp"
     android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp">
+    android:layout_marginRight="8dp"
+    android:layout_marginBottom="8dp"
+    android:background="@color/orange">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvListOfCars"
@@ -16,18 +18,26 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/TitleOfCarList"
+        app:layout_constraintVertical_bias="1.0" />
 
-    <EditText
-        android:id="@+id/SearchBar"
+    <TextView
+        android:id="@+id/TitleOfCarList"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="0dp"
-        android:layout_weight="1"
-        android:hint="Search"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Hot Cars in your area"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/white"
+        android:shadowColor="@color/navy_blue"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="2"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
