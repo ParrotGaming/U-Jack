@@ -31,16 +31,35 @@ class ReportFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        // Initialize Firebase Auth
-        auth = FirebaseAuth.getInstance()
-        val database = Firebase.firestore
-
         //Content view
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_report, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Initialize Firebase Auth
+        auth = FirebaseAuth.getInstance()
+        val database = Firebase.firestore
+
+        //View references
+        val btnSubmitReport = view.findViewById<Button>(R.id.btnSubmitReport)
+        val etUserDescription = view.findViewById<EditText>(R.id.UserCarDescriptionInput)
+        val etEstimatedValue = view.findViewById<EditText>(R.id.EstimatedCarValueInput)
+        val etDifficultyRating = view.findViewById<EditText>(R.id.DifficultyRatingStatementInput)
 
         //Btn submit logic
         btnSubmitReport.setOnClickListener() {
@@ -64,15 +83,6 @@ class ReportFragment : Fragment() {
                     }
             }
         }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_report, container, false)
     }
 
     companion object {
