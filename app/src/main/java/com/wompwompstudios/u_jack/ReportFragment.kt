@@ -1,10 +1,13 @@
 package com.wompwompstudios.u_jack
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,9 +15,13 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.firestore
+import com.google.firebase.storage.storage
+import okhttp3.internal.wait
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -57,7 +64,9 @@ class ReportFragment : Fragment() {
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
         val database = Firebase.firestore
-
+        val storage = Firebase.storage("gs://u-jack.appspot.com")
+        val storageRef = storage.reference
+        var image:Uri? = null
         //View references
         val btnSubmitReport = view.findViewById<Button>(R.id.btnSubmitReport)
         val etUserDescription = view.findViewById<EditText>(R.id.UserCarDescriptionInput)
@@ -71,23 +80,48 @@ class ReportFragment : Fragment() {
             //validate input
             if(Integer.parseInt(etDifficultyRating?.text.toString()) in 1..10) {
                 //create car object
-                val car = hashMapOf(
-                    "User" to auth.currentUser!!.uid,
-                    "Description" to etUserDescription?.text.toString(),
-                    "Value" to etEstimatedValue?.text.toString(),
-                    "Difficulty" to etDifficultyRating?.text.toString(),
-                )
-                //push to database
-                database.collection("cars")
-                    .add(car)
-                    .addOnSuccessListener { documentReference ->
-                        (activity as MainActivity).replaceFragment(SearchFragment())
+                var imageUrl = "https://placehold.co/400.png"
+                if(image != null) {
+                    val carRef = storageRef.child("images/${image!!.lastPathSegment}")
+                    val uploadTask = carRef.putFile(image!!)
+
+                    val urlTask = uploadTask.continueWithTask { task ->
+                        if (!task.isSuccessful) {
+                            task.exception?.let {
+                                throw it
+                            }
+                        }
+                        carRef.downloadUrl
+                    }.addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            imageUrl = task.result.toString()
+
+                            val car = hashMapOf(
+                                "User" to auth.currentUser!!.uid,
+                                "Description" to etUserDescription?.text.toString(),
+                                "Value" to etEstimatedValue?.text.toString(),
+                                "Difficulty" to etDifficultyRating?.text.toString(),
+                                "Location" to "37°46'38.7\"N 122°26'57.5\"W",
+                                "Image" to imageUrl
+                            )
+                            //push to database
+                            database.collection("cars")
+                                .add(car)
+                                .addOnSuccessListener { documentReference ->
+                                    (activity as MainActivity).replaceFragment(SearchFragment())
+                                }
+                                .addOnFailureListener { e ->
+                                    println(e)
+                                }
+                        } else {
+                            // Handle failures
+                            // ...
+                        }
                     }
-                    .addOnFailureListener { e ->
-                        println(e)
-                    }
+                }
             }
         }
+
         val changeImage =
             registerForActivityResult(
                 ActivityResultContracts.StartActivityForResult()
@@ -95,6 +129,7 @@ class ReportFragment : Fragment() {
                 if (it.resultCode == Activity.RESULT_OK) {
                     val data = it.data
                     val imgUri = data?.data
+                    image = imgUri
                     carImageView.setImageURI(imgUri)
                 }
             }
