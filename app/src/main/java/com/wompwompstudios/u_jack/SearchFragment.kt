@@ -45,7 +45,6 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // TODO: Place all code dependant on views within fragment in here
-
         (activity as MainActivity).replaceFragment(R.id.flSearchPageFrame, SearchCarsFragment())
 
         val bnvSearchTypeBar = view.findViewById<BottomNavigationView>(R.id.bnvSearchTypeBar)
