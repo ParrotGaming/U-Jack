@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.firestore
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.wompwompstudios.u_jack.databinding.ActivityMainBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,6 +29,8 @@ class SearchFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +53,7 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // TODO: Place all code dependant on views within fragment in here
+        (activity as MainActivity).replaceFragment(R.id.flSearchPageFrame, SearchCarsFragment())
 
         ImageAdaptor = ImageAdapter((activity as MainActivity).applicationContext, mutableListOf(), mutableListOf(), mutableListOf(), mutableListOf(), mutableListOf())
 
@@ -70,6 +75,15 @@ class SearchFragment : Fragment() {
 
             }
 
+        val bnvSearchTypeBar = view.findViewById<BottomNavigationView>(R.id.bnvSearchTypeBar)
+        bnvSearchTypeBar.setOnItemSelectedListener {
+            when(it.itemId) {
+                R.id.iSearchCarsBtn -> (activity as MainActivity).replaceFragment(R.id.flSearchPageFrame, SearchCarsFragment())
+                R.id.iSearchPackagesBtn -> (activity as MainActivity).replaceFragment(R.id.flSearchPageFrame, SearchPackagesFragment())
+                else -> {}
+            }
+            true
+        }
     }
 
     companion object {
