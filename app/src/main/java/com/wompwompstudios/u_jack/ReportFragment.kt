@@ -1,13 +1,10 @@
 package com.wompwompstudios.u_jack
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +17,6 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.firestore
 import com.google.firebase.storage.storage
-import okhttp3.internal.wait
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -108,7 +104,7 @@ class ReportFragment : Fragment() {
                             database.collection("cars")
                                 .add(car)
                                 .addOnSuccessListener { documentReference ->
-                                    (activity as MainActivity).replaceFragment(SearchFragment())
+                                    (activity as MainActivity).replaceFragment(R.id.flMainPageFrame, SearchCarsFragment())
                                 }
                                 .addOnFailureListener { e ->
                                     println(e)

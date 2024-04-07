@@ -1,16 +1,10 @@
 package com.wompwompstudios.u_jack
 
 import android.content.Intent
-import android.content.LocusId
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
-import com.google.firebase.Firebase
 import com.wompwompstudios.u_jack.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
