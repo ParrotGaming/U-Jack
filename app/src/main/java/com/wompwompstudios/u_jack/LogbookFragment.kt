@@ -1,10 +1,12 @@
 package com.wompwompstudios.u_jack
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -40,7 +42,11 @@ class LogbookFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // TODO: Place all code dependant on views within fragment in here
+        val btn = view.findViewById<Button>(R.id.button)
+
+        btn.setOnClickListener {
+            startActivity(Intent(requireContext(), LogSurvey::class.java))
+        }
 
     }
 
