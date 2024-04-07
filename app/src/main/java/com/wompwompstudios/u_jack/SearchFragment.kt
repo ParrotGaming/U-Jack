@@ -37,6 +37,13 @@ class SearchFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_search, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // TODO: Place all code dependant on views within fragment in here
+
+    }
+
     companion object {
         /**
          * Use this factory method to create a new instance of
