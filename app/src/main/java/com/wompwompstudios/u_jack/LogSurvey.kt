@@ -40,7 +40,7 @@ class LogSurvey : AppCompatActivity() {
                 .addOnSuccessListener { documents ->
                     val initial: Float = documents.data!![store].toString().toFloat()
                     database.collection("thefts").document(auth.currentUser!!.uid).update(store, (initial - money))
-                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
                     Log.d(Log.INFO.toString(), documents.data.toString())
                 }.addOnFailureListener {
                     Log.d(Log.ERROR.toString(), "IT NO WORKY WORK")
