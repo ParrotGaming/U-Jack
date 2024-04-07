@@ -42,6 +42,7 @@ class SearchFragment : Fragment() {
 
         // TODO: Place all code dependant on views within fragment in here
 
+
     }
 
     companion object {
